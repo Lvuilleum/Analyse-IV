@@ -1,5 +1,6 @@
 A latex document that resume the lecture course Analyse IV given by the professor Mathias Braun at BA4 in EPFL.
 Only resume the important point, not all the course are in it, not sufficient to revise the course 
+I'm currently taking this course so the document still isn't finished
 # Mon Document LaTeX
 
 ![Build Status](https://github.com/Lvuilleum/Analyse-IV/actions/workflows/latex.yml/badge.svg)
