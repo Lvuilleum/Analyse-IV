@@ -1,0 +1,84 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\geometry{margin=2.5cm} % Pour avoir de plus belles marges
+
+\title{\textbf{Analyse IV - Summary}}
+\author{Liam Vuilleumier}
+\date{2026}
+
+\begin{document}
+\maketitle
+
+\section{Information}
+A concise and rigorous summary transcribing the most important concepts and theorems from the Analyse IV lecture at EPFL.
+
+\section{Holomorphic and Analytic Functions}
+\subsection{Definitions}
+Let $\Omega \subseteq \mathbb{C}$ be an open set. A complex function $f: \Omega \to \mathbb{C}$ is said to be \textbf{complex differentiable} at a point $z_0 \in \Omega$ if the following limit exists:
+\begin{align*}
+    f'(z_0) = \lim_{z \to z_0} \frac{f(z) - f(z_0)}{z - z_0}
+\end{align*}
+
+If $f$ is complex differentiable at \textit{every} point of $\Omega$, we say $f$ is \textbf{holomorphic} on $\Omega$. 
+\\ If $f$ is holomorphic on the entire complex plane ($\Omega = \mathbb{C}$), we call $f$ an \textbf{entire function} (e.g., polynomials, $e^z$, $\sin(z)$).
+
+\section{The Cauchy-Riemann Equations}
+Let $z = x + iy \in \mathbb{C}$. A complex function $f(z)$ can be separated into its real and imaginary parts:
+\begin{align*}
+    f(x+iy) = u(x,y) + i v(x,y)
+\end{align*}
+where $u, v : \mathbb{R}^2 \to \mathbb{R}$.
+
+\subsection{Necessary and Sufficient Conditions}
+\textbf{Theorem:} Suppose $u(x,y)$ and $v(x,y)$ have continuous first-order partial derivatives (i.e., they are of class $C^1$) on an open set $\Omega$. The function $f = u + iv$ is holomorphic on $\Omega$ if and only if it satisfies the \textbf{Cauchy-Riemann equations}:
+\begin{align*}
+    \frac{\partial u}{\partial x} = \frac{\partial v}{\partial y} \quad \text{and} \quad \frac{\partial u}{\partial y} = -\frac{\partial v}{\partial x}
+\end{align*}
+
+When these equations hold, the complex derivative can be computed as:
+\begin{align*}
+    f'(z) = \frac{\partial u}{\partial x} + i \frac{\partial v}{\partial x} = \frac{\partial v}{\partial y} - i \frac{\partial u}{\partial y}
+\end{align*}
+
+\subsection{Harmonic Conjugates}
+Because holomorphic functions are infinitely differentiable, $u$ and $v$ have continuous second-order derivatives. By applying the Cauchy-Riemann equations and Schwarz's theorem (symmetry of second derivatives), we get:
+\begin{align*}
+    \Delta u = \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} = 0 \quad \text{and} \quad \Delta v = \frac{\partial^2 v}{\partial x^2} + \frac{\partial^2 v}{\partial y^2} = 0
+\end{align*}
+Therefore, the real and imaginary parts of a holomorphic function are \textbf{harmonic functions}. We say that $v$ is the harmonic conjugate of $u$.
+
+\section{The Complex Logarithm}
+\subsection{Principal Argument}
+For any $z \neq 0$, the principal argument $\text{Arg}(z)$ is the unique angle in the interval $(-\pi, \pi]$. It is computed using the arctangent function depending on the quadrant of $(x,y)$. 
+\\ \textit{Crucial limitation:} $\text{Arg}(z)$ is discontinuous across the negative real axis. \\
+this is how we compute it : 
+\[
+\text{Arg}(z) =
+\begin{cases}
+\arctan\left(\dfrac{y}{x}\right) & \text{if } x > 0 \\[6pt]
+\arctan\left(\dfrac{y}{x}\right) + \pi & \text{if } x < 0 \text{ and } y \ge 0 \\[6pt]
+\arctan\left(\dfrac{y}{x}\right) - \pi & \text{if } x < 0 \text{ and } y < 0 \\[6pt]
+\dfrac{\pi}{2} & \text{if } x = 0 \text{ and } y > 0 \\[6pt]
+-\dfrac{\pi}{2} & \text{if } x = 0 \text{ and } y < 0
+\end{cases}
+\]
+\subsection{Principal Branch of the Logarithm}
+We define the \textbf{principal branch} of the complex logarithm, denoted $\text{Log}(z)$, as:
+\begin{align*}
+    \text{Log}(z) = \ln|z| + i \text{Arg}(z) = \ln\left(\sqrt{x^2 + y^2}\right) + i \text{Arg}(x+iy)
+\end{align*}
+
+\textbf{Rigorous Properties:}
+\begin{itemize}
+    \item \textbf{Domain:} $\text{Log}(z)$ is a well-defined, single-valued function on the cut plane $\mathbb{C} \setminus (-\infty, 0]$. We must remove zero and the negative real axis (the branch cut) to maintain continuity.
+    \item \textbf{Holomorphy:} On this cut plane, $\text{Log}(z)$ is holomorphic.
+    \item \textbf{Derivative:} Its complex derivative is exactly what we expect from real analysis: 
+    \begin{align*}
+        \frac{d}{dz}\text{Log}(z) = \frac{1}{z} \quad \text{for } z \in \mathbb{C} \setminus (-\infty, 0]
+    \end{align*}
+\end{itemize}
+
+\end{document}
