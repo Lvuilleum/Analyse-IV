@@ -1,0 +1,35 @@
+name: Build LaTeX PDF
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Compile LaTeX
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: main.tex
+
+      - name: Create public folder
+        run: |
+          mkdir public
+          cp main.pdf public/
+
+      - name: Deploy PDF to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: public
+
+      - name: Upload PDF (artifact)
+        uses: actions/upload-artifact@v4
+        with:
+          name: PDF
+          path: main.pdf
