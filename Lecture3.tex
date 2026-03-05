@@ -1,0 +1,40 @@
+\section{Complex Integration}
+
+\textbf{Definition (Line Integral)} \\
+Let $\gamma : [a,b] \rightarrow \mathbb{C}$ be a regular (smooth) curve that parametrizes the path $\Gamma \subseteq \mathbb{C}$. Let $f: \Gamma \rightarrow \mathbb{C}$ be a continuous function. We define the line integral of $f$ along $\Gamma$ by:
+\begin{equation*}
+    \int_\Gamma f(z) \, dz = \int_a^b f(\gamma(t)) \gamma'(t) \, dt
+\end{equation*}
+
+\textbf{Example} \\
+Let $\Gamma$ be the unit semi-circle centered at $z=0$, parametrized counterclockwise: $\gamma(t) = e^{it}$ for $t \in [0, \pi]$. Then $dz = i e^{it} dt$.
+
+\subsection{Cauchy's Theorem}
+Let $U \subseteq \mathbb{C}$ be an open and simply connected set, and let $\gamma$ be a closed and piecewise regular curve inside $U$. If $f: U \rightarrow \mathbb{C}$ is holomorphic, then:
+\begin{equation*}
+    \oint_\Gamma f(z) \, dz = 0
+\end{equation*}
+
+\begin{itemize}
+    \item \textbf{Simply connected:} The set consists of "one piece" and has no holes.
+    \item \textbf{Piecewise regular:} $\Gamma$ consists of finitely many smooth curves joined end-to-end (e.g., the boundary of a square).
+\end{itemize}
+
+\subsubsection{Example}
+Let $\Gamma$ be the unit circle and $f(z) = z^2$. Since $f$ is holomorphic on the simply connected set $U = \mathbb{C}$, by Cauchy's Theorem:
+\begin{equation*}
+    \oint_\Gamma z^2 \, dz = 0
+\end{equation*}
+
+\subsection{The Extension of Cauchy's Theorem (Deformation)}
+Let $\Gamma_0, \Gamma_1$ be closed, simple, regular curves such that $\Gamma_1 \subseteq \text{int}(\Gamma_0)$. Let $\gamma_0, \gamma_1$ be parametrizations of $\Gamma_0, \Gamma_1$ with the same orientation. If $f$ is holomorphic on the region between $\Gamma_0$ and $\Gamma_1$ (including the boundaries), then:
+\begin{equation*}
+    \oint_{\Gamma_0} f(z) \, dz = \oint_{\Gamma_1} f(z) \, dz
+\end{equation*}
+
+\subsection{Cauchy's Integral Formula}
+Suppose $D \subseteq \mathbb{C}$ is open and $f: D \rightarrow \mathbb{C}$ is holomorphic. If $z_0 \in D$, then:
+\begin{equation*}
+    f(z_0) = \frac{1}{2\pi i} \oint_\gamma \frac{f(z)}{z - z_0} \, dz
+\end{equation*}
+for every simple, closed, counterclockwise-oriented curve $\gamma$ in $D$ whose interior contains $z_0$.
