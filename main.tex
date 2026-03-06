@@ -42,7 +42,36 @@ When these equations hold, the complex derivative can be computed as:
 \begin{align*}
     f'(z) = \frac{\partial u}{\partial x} + i \frac{\partial v}{\partial x} = \frac{\partial v}{\partial y} - i \frac{\partial u}{\partial y}
 \end{align*}
+\subsection{The Complex Chain Rule}
+The chain rule for complex functions works exactly like the chain rule in real calculus. This is a vital tool for proving that a composite function is holomorphic without having to check the Cauchy-Riemann equations directly.
 
+\textbf{The Formula:} \\
+Let $g: \Omega \to U$ be holomorphic on $\Omega \subseteq \mathbb{C}$, and let $f: U \to \mathbb{C}$ be holomorphic on $U$. Then the composite function $h(z) = (f \circ g)(z) = f(g(z))$ is holomorphic on $\Omega$, and its derivative is:
+\begin{align*}
+    h'(z) = f'(g(z)) \cdot g'(z)
+\end{align*}
+
+\subsubsection{How to Use the Chain Rule}
+To compute the derivative of a complex composition, follow these steps:
+\begin{enumerate}
+    \item \textbf{Identify the components:} Break the function into an "outer" function $f(w)$ and an "inner" function $g(z)$.
+    \item \textbf{Differentiate the outer function:} Compute $f'(w)$ with respect to its variable $w$.
+    \item \textbf{Differentiate the inner function:} Compute $g'(z)$ with respect to $z$.
+    \item \textbf{Substitute and Multiply:} Multiply the results together, replacing the variable $w$ in $f'(w)$ with the original inner function $g(z)$.
+\end{enumerate}
+
+\textbf{Example: Differentiating $h(z) = e^{z^2}$}
+\begin{itemize}
+    \item Let the outer function be $f(w) = e^w \implies f'(w) = e^w$.
+    \item Let the inner function be $g(z) = z^2 \implies g'(z) = 2z$.
+    \item Applying the formula:
+    \begin{align*}
+        h'(z) = e^{g(z)} \cdot (2z) = 2z e^{z^2}
+    \end{align*}
+\end{itemize}
+
+\textbf{Note on Holomorphicity:} \\
+If $g$ is holomorphic on $\Omega$ and $f$ is holomorphic on $g(\Omega)$, then $f \circ g$ is guaranteed to be holomorphic on $\Omega$. This allows us to conclude that functions like $\sin(e^z)$ or $\cos(z^3)$ are \textbf{entire functions} because they are compositions of entire functions.
 \subsection{Harmonic Conjugates}
 Because holomorphic functions are infinitely differentiable, $u$ and $v$ have continuous second-order derivatives. By applying the Cauchy-Riemann equations and Schwarz's theorem (symmetry of second derivatives), we get:
 \begin{align*}
