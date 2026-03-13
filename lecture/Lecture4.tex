@@ -1,0 +1,68 @@
+\section{Tricks to Compute Integrals Easily}
+
+\begin{itemize}
+    \item \textbf{Cauchy's Theorem:} If $f$ is holomorphic on a \textbf{simply connected} set $D$, then for any closed loop $\gamma$ in $D$:
+    \begin{align*}
+        \int_{\gamma} f(z) \, dz = 0
+    \end{align*}
+    
+    \item \textbf{Deformation Theorem:} We can replace an integral over a "complicated" curve $\Gamma_0$ by an integral over a "simpler" curve $\Gamma_1$ (like a small circle) as long as $f$ is holomorphic in the region between $\Gamma_0$ and $\Gamma_1$.
+    
+    \item \textbf{Path Independence:} If $\Gamma_0$ and $\Gamma_1$ share the same endpoints and orientation, and $f$ is holomorphic on the region they enclose, then:
+    \begin{align*}
+        \int_{\Gamma_0} f(z) \, dz = \int_{\Gamma_1} f(z) \, dz
+    \end{align*}
+    
+    \item \textbf{Generalized Cauchy Integral Formula:} Useful for computing integrals of the form $\frac{f(z)}{(z-z_0)^{n+1}}$. If $f$ is holomorphic on and inside $\gamma$:
+    \begin{align*}
+        \int_\gamma \frac{f(z)}{(z-z_0)^{n+1}} \, dz = \frac{2 \pi i}{n!} f^{(n)}(z_0)
+    \end{align*}
+    \textit{Example:} To calculate $\int_\gamma \frac{e^z}{z^3} dz$ around $0$, use $n=2$ and $f(z)=e^z$. The result is $\frac{2\pi i}{2!} f''(0) = \pi i$.
+\end{itemize}
+
+\section{Taylor Series and Laurent Series}
+
+\subsection{Taylor Series}
+\textbf{Real case:} Let $f: \mathbb{R} \rightarrow \mathbb{R}$ be $N+1$ times differentiable. For any $x_0 \in \mathbb{R}$, the Taylor polynomial is $T^N_{x_0} f(x)$. If $f \in \mathcal{C}^{N+1}$, there exists $\theta \in (0,1)$ such that:
+\begin{align*}
+    f(x) = \sum_{n=0}^N \frac{f^{(n)}(x_0)}{n!}(x-x_0)^n + \frac{f^{(N+1)}(\theta x_0 + (1-\theta)x)}{(N+1)!}(x-x_0)^{N+1}
+\end{align*}
+
+\textbf{Complex case:} Let $f: D \rightarrow \mathbb{C}$ be holomorphic. If the disk $B_R(z_0)$ is contained in $D$, then $f$ is analytic and:
+\begin{align*}
+    f(z) = \sum_{n=0}^\infty \frac{f^{(n)}(z_0)}{n!}(z-z_0)^n \quad \text{for all } z \in B_R(z_0)
+\end{align*}
+The largest such $R$ is the \textbf{Radius of Convergence}.
+
+\subsection{Laurent Series}
+\textbf{Theorem:} Let $f$ be holomorphic on an annulus (punctured disk) $0 < |z-z_0| < R$. Then:
+\begin{align*}
+    f(z) = \sum_{n = -\infty}^\infty c_n(z-z_0)^n = \dots + \frac{c_{-2}}{(z-z_0)^2} + \frac{c_{-1}}{z-z_0} + c_0 + c_1(z-z_0) + \dots
+\end{align*}
+where the coefficients are given by:
+\begin{align*}
+    c_n = \frac{1}{2 \pi i}\int_\gamma \frac{f(w)}{(w-z_0)^{n+1}}dw
+\end{align*}
+
+\textbf{Definition:} The series is split into two parts:
+\begin{itemize}
+    \item \textbf{Singular part:} Terms with negative powers ($n < 0$).
+    \item \textbf{Regular part:} Terms with non-negative powers ($n \geq 0$).
+\end{itemize}
+
+\section{Classification of Singularities and Residues}
+
+\subsection{Types of Isolated Singularities}
+By looking at the singular part of the Laurent series of $f$ at $z_0$:
+\begin{enumerate}
+    \item \textbf{Removable Singularity:} No negative powers ($c_n = 0$ for all $n < 0$).
+    \item \textbf{Pole of order $k$:} The lowest power is $c_{-k} \neq 0$ (finitely many negative terms).
+    \item \textbf{Essential Singularity:} Infinitely many negative terms (e.g., $e^{1/z}$ at $z=0$).
+\end{enumerate}
+
+\subsection{The Residue Theorem}
+The coefficient $c_{-1}$ is called the \textbf{Residue} of $f$ at $z_0$, denoted $\text{Res}(f, z_0)$.
+\begin{align*}
+    \int_\gamma f(z) \, dz = 2 \pi i \sum_{k=1}^m \text{Res}(f, z_k)
+\end{align*}
+This is the most powerful "trick" to solve integrals where $\gamma$ encloses several poles $z_k$.

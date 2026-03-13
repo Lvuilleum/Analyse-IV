@@ -70,6 +70,22 @@ To compute the derivative of a complex composition, follow these steps:
     \end{align*}
 \end{itemize}
 
+\subsubsection{Example: Logarithmic Composition}
+Consider $f(z) = \log(1+z^2)$ using the principal branch of the logarithm.
+
+\textbf{1. Domain and Holomorphicity:} \\
+The principal branch $\log(w)$ is holomorphic for $w \in \mathbb{C} \setminus (-\infty, 0]$. Thus, $f(z)$ is holomorphic where $1+z^2$ is not a non-positive real number. This occurs when $z \neq iy$ for $|y| \geq 1$. The largest open subset of holomorphicity is:
+\begin{equation*}
+    \Omega = \mathbb{C} \setminus \{iy : y \in \mathbb{R}, |y| \geq 1\}
+\end{equation*}
+
+\textbf{2. Derivative via Chain Rule:} \\
+Let $w = g(z) = 1+z^2$. Then $f(z) = \log(w)$.
+\begin{align*}
+    f'(z) &= \frac{d}{dw}(\log w) \cdot \frac{d}{dz}(1+z^2) \\
+    &= \frac{1}{1+z^2} \cdot 2z = \frac{2z}{1+z^2}
+\end{align*}
+
 \textbf{Note on Holomorphicity:} \\
 If $g$ is holomorphic on $\Omega$ and $f$ is holomorphic on $g(\Omega)$, then $f \circ g$ is guaranteed to be holomorphic on $\Omega$. This allows us to conclude that functions like $\sin(e^z)$ or $\cos(z^3)$ are \textbf{entire functions} because they are compositions of entire functions.
 \subsection{Harmonic Conjugates}
@@ -109,6 +125,8 @@ We define the \textbf{principal branch} of the complex logarithm, denoted $\text
         \frac{d}{dz}\text{Log}(z) = \frac{1}{z} \quad \text{for } z \in \mathbb{C} \setminus (-\infty, 0]
     \end{align*}
 \end{itemize}
-
-\input{Lecture3}
+\section{Lecture 3}
+\input{lecture/Lecture3}
+\section{Lecture 4}
+\input{lecture/Lecture4}
 \end{document}
