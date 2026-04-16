@@ -1,0 +1,103 @@
+\subsection{Review of Fourier analysis}
+The fourier transform well-defined is 
+\begin{align*}
+    \hat{f}(a) := \frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty e^{-i a x}f(x)dx
+\end{align*}
+Sometimes $F[f]$ instead of $\hat{f}$ \\
+\textbf{Inverse Fourier transform : } $\overset{u}{f}$ well-defined is 
+\begin{align*}
+    \overset{u}{f}(x) =  \frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty  e^{iax}f(a)da
+\end{align*}
+Sometimes $F^{-1}[f]$ instead. 
+\subsubsection{Properties of Fourier transform}
+\begin{itemize}
+    \item Linearity : $F[\lambda f + \mu g] = \lambda F[f] + \mu F[g]$, whenever $\lambda, \mu \in \mathbb{R}$
+    \item Time shift: Let $g(x) = f(x-x_0)$ then 
+    \begin{align*}
+        \hat{g}(a) = e^{-iax_0}\frac{1}{\sqrt{2 \pi}}\int_{-\infty}^\infty e^{-iay}f(y)dy = e^{-iax_0}\hat{f}(a)
+    \end{align*}
+    \item Frequency shift : Let $g(x) = e^{ia_0x}f(x)$ for $a_0 \in \mathbb{R}$ 
+    \begin{align*}
+        \hat{g}(a) = \frac{1}{\sqrt{2 \pi}}\int_{-\infty}^\infty  e^{-(a-a_0)x}f(x)dx = \hat{f}(a-a_0) 
+    \end{align*}
+    \item rescaling/dilation : Let $g(x) = f(\lambda x)$ where $\lambda \in \mathbb{R}\setminus \{0\}$
+    \begin{align*}
+        \hat{g}(a) = \frac{1}{\sqrt{2 \pi}}\int_{-\infty}^\infty e^{-iax}f(\lambda x)dx
+    \end{align*} 
+    to recover $\hat{f}$ want to substitute $y = \lambda x$. Two cases
+    \begin{itemize}
+        \item if $\lambda > 0$, we got $\int_{-\infty}^\infty \cdots \frac{1}{\lambda}dy$
+        \item if $\lambda < 0$, we got $\int_{\infty}^{-\infty} \cdots \frac{1}{\lambda}dy = - \int_{-\infty}^\infty \cdots \frac{1}{\lambda}dy = \int_{-\infty}^\infty \cdots \frac{1}{|\lambda |}dy$
+    \end{itemize}
+    In both cases : 
+    \begin{align*}
+        \hat{g}(a) = \frac{1}{\sqrt{2 \pi}}\int_{-\infty}^\infty e^{-iay/\lambda}f(y)\frac{1}{|\lambda|}dy = \frac{1}{|\lambda|} \hat{f}(\frac{a}{\lambda})
+    \end{align*}
+    \item derivatives  : Let $g(x) = f'(x)$. Then 
+    \begin{align*}
+        \hat{g}(a) = ia\hat{f}(a)
+    \end{align*}
+    More generally
+    \begin{align*}
+        F[f^{(u)}](a) = (ia)^u F[f](a)
+    \end{align*}
+    So then Fourier transform converts differential equation with constant coefficients into algebric equations on frequency domain. 
+\end{itemize}
+\subsubsection{Convolution}
+Given $f, g : \mathbb{R} \rightarrow \mathbb{C},$ the convolution $f \ast g$, whenever well-defined is 
+\begin{align*}
+    f \ast g (x) = \int_{-\infty}^\infty f(y)g(x-y) dy
+\end{align*}
+Some properties of convolution:
+\begin{itemize}
+    \item $f \ast g = g \ast f$
+    \item $f \ast (g \ast h) = (f \ast g) \ast h$
+    \item $f \ast (g+h) = f\ast g + f \ast h$
+    \item $(f \ast g)' = f' \ast g = f \ast g'$
+\end{itemize}
+\begin{itemize}
+    \item Convolution : 
+    \begin{align*}
+    F[f \ast g] = \sqrt{2 \pi} F[f]F[g]
+    \end{align*}
+    \item Gaussian function : if $f(x) = e^{-x^2/2},$ 
+    \begin{align*}
+        \hat{f}(a) = e^{-a^2/2}
+    \end{align*}
+    \item Plancherel's theorem : 
+    \begin{align*}
+        \int_{-\infty}^\infty |f(x)|^2dx = \int_{-\infty}^\infty  |\hat{f}(a)|^2da
+    \end{align*}
+\end{itemize}
+
+\subsection{Laplace analysis}
+Fourier transform computed for signals on $\mathbb{R}$ \\
+Laplace transform: Computed for signals defined on $\mathbb{R_+}$. \\
+Both transform differential equ. into algebric equ. \\
+Let $f: \mathbb{R_+} \rightarrow \mathbb{C}$, where well-defined, the \textbf{Laplace transform} of $f$ at $z \in \mathbb{C}$ is 
+\begin{align*}
+    \mathcal{L}[f](z) := \int_0^\infty f(t) e^{-zt}dt
+\end{align*}
+Sometimes Laplace transform of functions are written by capital letters. 
+\subsubsection{Convergence criteria}
+Of course the above integral well-edfined if $\int_{-\infty}^\infty |f(t)||e^{-zt}dt| < \infty$ Assume that is $\gamma_0 \in \mathbb{R}$ st
+\begin{align*}
+    \int_0^\infty |f(t)|e^{-\gamma_0t}dt < \infty 
+\end{align*}
+(This means $|f(t)| < e^{\gamma_0 t}$ as $t \rightarrow \infty)$
+\begin{align*}
+    |\mathcal{L}[f](z)| \leq \int_0^\infty |f(t)||e^{-zt}|dt \\
+    = \int_0^\infty |f(t)||e^{-Re(z) t}|dt \\
+    \leq \int_0^\infty |f(t)|e^{-\gamma_0t}dt < \infty 
+\end{align*}
+Thus if such a $\gamma_0$ exists, $\mathcal{L}[f](z)$ is defined at least for $z \in \{Re > \gamma_0\}$
+\subsubsection{Definition} A $\gamma_0 \in \mathbb{R}$ such that $\mathcal{L}[f](z)$ is well-defined at least on $\{Re > \gamma_0\}$ is called \textbf{abscission of convergence} \\
+Let $\gamma_0$ abscisse of convergence. Thus $\mathcal{L}[f]$ is holomorphic on $\{Re > \gamma_0\}$. Set $F(z) = \mathcal{L}[f](z)$. Thus 
+\begin{align*}
+    \frac{d}{dz}F(z) = \frac{d}{dz}\int_0^\infty f(z)e^{-zt}dt \\
+    = \int_0^\infty f(t) (-t)e^{-zt}dt = - \mathcal{L}[tf(t)](z)
+\end{align*}
+In short 
+\begin{align*}
+    \mathcal{L}[f(t)]' = - \mathcal{L}[tf(t)]
+\end{align*}

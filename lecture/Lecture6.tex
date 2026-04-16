@@ -1,0 +1,40 @@
+\subsection{Residues}
+\textbf{Definition :} The coefficient $c_{-1}$ of the term $(z-z_0)^{-1}$ in the Laurent series for $f$ at $z_0$ is called \textbf{residue of $f$ at $z_0$}
+\begin{align*}
+    Res_{z_0}(f) := c_{-1}
+\end{align*}
+\textbf{Remark :} Note that by def of the coefficients in the Laurent series of $f$,
+\begin{align*}
+    Res_{z_0}(f) := \frac{1}{2 \pi i}\int_\gamma f(z)dz
+\end{align*}
+where $\gamma$ is a closed, simple, counterclockwise oriented curve that contains $z_0$ in its interior and $f$ is holo on $int \gamma \setminus \{z_0\}$
+\subsection{Residue theorem}
+\subsubsection{Theorem}
+Suppose $D \subseteq \mathbb{R}$ open and simply connected and let $\gamma$ be simple closed curve in $D$ which is counterclockwise oriented. Let $z_1,...,z_w \in int \gamma$.
+Assume $f: D \setminus \{z_1,...,z_w \} \rightarrow \mathbb{C}$ is holomorphic. Then 
+\begin{align*}
+    \int_\gamma f(z)dz = 2 \pi i[Res_{z_1}(f) + ... + Res_{z_w}(f)]
+\end{align*}
+\subsubsection{Examples}
+Consider $f(z) = \frac{1}{z}$. Lez $\gamma$ simple closed counterclockwise oriented curve in $\mathbb{C}$. Compute $\int_\gamma fdz$.
+\begin{enumerate}
+    \item if $0 \in int \gamma$ then by residue thm. \begin{align*}
+        \int_\gamma fdz = 2 \pi i Res_0(f) = 2 \pi i
+    \end{align*}
+    \item if $0 \notin int \gamma $ then $\int_\gamma fdz = 0$
+    \item if $0 \in \gamma$ then $\int_\gamma fdz$ is not well-defined
+\end{enumerate}
+
+\subsection{Apllications}
+The residue thm can be used to compute integrals over simple closed curve, sometimes even to compute real integers by replacing thm with complex integrals!
+\subsubsection{Example}
+Compute $\int_{-\infty}^\infty \frac{1}{1+x^2}dx$. Set $f(z) = \frac{1}{1+z^2}$
+Given $R>0$ consider the segment $L_R:[-R,R] \rightarrow \mathbb{C}$ given by $L_R(t) = t$ and the half-circle $C_R:[0,\pi ] \rightarrow \mathbb{C}$ given by $C_R(t) = Re^{it}$
+Consider the closed curve $\gamma = L_R \cup C_R$. Then the function $f(z) = \frac{1}{1+z^2}$ has poles of order $1$ at $i$. From the residue theorem:
+\begin{align*}
+    \int_\gamma fdz = 2 \pi i Res_i(f)
+\end{align*}
+But 
+\begin{align*}
+    Res_i(f) = \lim_{z \rightarrow i} (z-i)f(z) = \lim_{z \rightarrow i}\frac{1}{z+i} = \frac{1}{2i}
+\end{align*}
