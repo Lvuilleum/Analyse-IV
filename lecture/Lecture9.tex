@@ -1,0 +1,39 @@
+\subsection{Theorem}
+For all $u \in \mathbb{N}$ and whenever $Re(z) > 0$
+\begin{align*}
+    \mathcal{L}[t^u](z) = \frac{u!}{z^{u+1}}
+\end{align*}
+\subsubsection{Linearity}
+Let $f,g: \mathbb{R}_+ \rightarrow \mathbb{C}$ be st $\mathcal{L}[f], \mathcal{L}[g]$ are defined where $Re(z) > \gamma_0$ for some $\gamma_0 \in \mathbb{R}$. Then for all $\lambda, \mu \in \mathbb{C}$, $\mathcal{L}[\lambda f + \mu g](g)$ is defined where $Re(z) > \gamma_0$ and 
+\begin{align*}
+    \mathcal{L}[\lambda f + \mu g](z) = \lambda \mathcal{L}[f](z) + \mu \mathcal{L}[g](z)
+\end{align*}
+\subsection{Theorem}
+Let $f: \mathbb{R}_+ \rightarrow \mathbb{C}$ be of class $C^1$. Assume $\gamma_0 \in \mathbb{R}$ abscisse of coy for $f$ and $f'$. Then for $Re(z) > \gamma_0$,
+\begin{align*}
+    \mathcal{L}[f'](z) = z \mathcal{L}[f](z) -f(0)
+\end{align*}
+
+\textbf{Laplace trafo of derivation : }
+
+\begin{align*}
+    \mathcal{L}[f^{(u)}](z) = z^k \mathcal{L}[f](z) - \sum_{j=0}^{k-1}z^{k-1-j}f^{(j)}(0)
+\end{align*}
+\subsection{Theorem}
+Let $f: \mathbb{R}_+ \rightarrow \mathbb{C}$ piecewise continuous and $\gamma_0 \geq 0$ an abscissa of convergence for $f$. Define $g: \mathbb{R}_+ \rightarrow \mathbb{C}$ by $g(t) = \int_0^tf(s)ds$. Then when $Re(z) > \gamma_0$, 
+\begin{align*}
+    \mathcal{L}[g](z) = \frac{1}{z}\mathcal{L}[f](z)
+\end{align*}
+
+\subsection{Theorem}
+Let $a>0$ and $b \in \mathbb{R}$. Let $f: \mathbb{R}_+ \rightarrow \mathbb{C}$ piecewise continuous with abscissa of coy $\gamma_0 \in \mathbb{R}$. Define $g: \mathbb{R}_+ \rightarrow \mathbb{C}$ by $g(t) = e^{-bt}f(at)$. Then
+\begin{align*}
+    \mathcal{L}[g](z) = \frac{1}{a}\mathcal{L}[f] (\frac{z+b}{a})
+\end{align*}
+holds when $Re(\frac{z+b}{a}) > \gamma_0$
+
+\subsection{Theorem}
+Let $f,g: \mathbb{R}_+ \rightarrow \mathbb{C}$ piecewise continuous with common absissa of convergence $\gamma_0 \in \mathbb{R}$. THen $\gamma_0$ is an abscissa of convergence for $f \star g$ and where $Re(z) > \gamma_0$
+\begin{align*}
+    \mathcal{L}[f \star g](z) = \mathcal{L}[f](z) \mathcal{L}[g](z)
+\end{align*}
