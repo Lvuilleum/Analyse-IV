@@ -1,0 +1,88 @@
+\subsection{Application of Laplace analysis to the Cauchy problem}
+\subsubsection{ODE with constant coefficients}
+Let $a, y_0 \in \mathbb{R}$ and $f: \mathbb{R}_+ \rightarrow \mathbb{R}$ piecewise continuous.
+Task: Find a solution $y: \mathbb{R}_+ \rightarrow \mathbb{R}$ solving 
+\begin{align*}
+    (1)\begin{cases}
+        y'(t) + ay(t) = f(t) \text{  for t > 0} \\
+        y(0) = y_0 \text{ (initial condition)}
+    \end{cases}
+\end{align*}
+\textbf{Existence:} finding a solution (Laplace analysis
+
+\textbf{Uniqueness :} there is a unique solution
+
+\textbf{Uniqueness for (1)}
+Let $y_1, y_2: \mathbb{R}_+ \rightarrow \mathbb{R}$ two sol to (1)
+
+Show they coincide, we'll do this by showing $w(t) = 0$ for all $t \in \mathbb{R}_+$, where $w(t) = y_1(t) - y_2(t)$
+\begin{align*}
+    \text{for } y_1, yields \\
+    \begin{cases}
+        w'(t) + aw(t) = 0 \\
+        w(0) = 0
+    \end{cases}
+\end{align*}
+with some multiplication, we can obtain 
+\begin{align*}
+    (e^{at}w(t))' = ae^{at}w(t) + e^{at}w'(t)
+\end{align*}
+Hence $e^{at}w(t)$ const in $t$. Hence 
+\begin{align*}
+    e^{at}w(t) = e^{a0}w(0) = 0 \Rightarrow w(t) =0
+\end{align*}
+
+\textbf{Existence}: Find a solution by taking Laplace transformation of (1)
+\begin{align*}
+    y'(t) + ay(t) = f(t) \\ \Rightarrow \mathcal{L}[y'](z)  + a\mathcal{L}[y](z) = \mathcal{L}[f](z) \ \ \ \ \ \  (2)
+\end{align*}
+Setting $Y = \mathcal{L}[y]$ and $F = \mathcal{L}[f]$ and using the formula for Laplce transformation of derivations : 
+\begin{align*}
+    (2) \Rightarrow zY(z) - y(0) + aY(z) = F(z) \\
+    \Rightarrow Y(z) = \frac{F(z)}{z+a} + \frac{y_0}{z+a}
+\end{align*}
+With some changement of the function we can finally obtain 
+\begin{align*}
+    y(t) = \int_0^t e^{-a(t-s)}f(s)ds + y_0e^{-at}
+\end{align*}
+
+\textbf{Second order initial value problem}
+Let $w \in \mathbb{R}_+, a > 0$, and $f: \mathbb{R}_+ \rightarrow \mathbb{R}$ as above 
+\begin{align*}
+    (3)
+    \begin{cases}
+        y''(t) + 2ay'(t) + w^2y(t) = f(t) \\
+        y(0) = y_0 \\
+        y'(0) = v_0
+    \end{cases}
+\end{align*}
+The function is uniqueness
+
+\textbf{Existence}
+We have three differenet cases : 
+\begin{enumerate}
+    \item $a^2 = w^2$ (critical damped) In this case :
+    \begin{align*}
+        y(t) = \int_0^t (t-s)e^{-a(t-s)}f(s)ds + e^{-at}y_0 + te^{-at}(ay_0 + v_0)
+    \end{align*}
+    \item $w^2 > a^2$ (underdamped) we have 
+    \begin{align*}
+        y(t) = \int_0^t \frac{1}{\sqrt{w^2-a^2}}e^{-a(t-s)}sin(\sqrt{w^2-a^2}(t-s))f(s)ds \\ +y_0 e^{-at}cos(\sqrt{w^2-a^2}t) \\ + (ay_0 + v_0)\frac{1}{\sqrt{w^2-a^2}}e^{-at}sin(\sqrt{w^2-a^2}t)
+    \end{align*}
+    \item $w^2 < a^2$ (overdamped) Thus 
+    \begin{align*}
+        y(t) = \int_0^t \frac{1}{\sqrt{a^2-w^2}}e^{-a(t-s)}sinh(\sqrt{a^2-w^2}(t-s))f(s)ds \\
+        + y_0 e^{-at}cosh(\sqrt{a^2-w^2}t) \\
+        + (ay_0 + v_0)\frac{1}{\sqrt{a^2-w^2}}e^{-at}sinh(\sqrt{a^2-w^2}t)
+    \end{align*}
+\end{enumerate}
+
+\subsubsection{Inverse Laplace transformation}
+\textbf{Theorem:} Assume $f:\mathbb{R}_+ \rightarrow \mathbb{C}$ piecewise continuous and for some $\gamma \in \mathbb{R}$, $\mathcal{L}[f]$ is holo on $\{Re \geq \gamma\}$ and 
+\begin{align*}
+    \lim_{t \rightarrow\infty}\int_{-T}^TF(\gamma + is)e^{(\gamma + is)t}ds
+\end{align*}
+exists for all $t\in \mathbb{R}_+$ Then 
+\begin{align*}
+    f(t) = \frac{1}{2 \pi}\int_{-\infty}^\infty \mathcal{L}[f](\gamma + is) e^{(\gamma + is)t}ds
+\end{align*}
